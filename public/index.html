@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Shoppy Cart</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px dashed red; */
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background-color: floralwhite;
+  }
+
+  .page-container {
+    margin: auto;
+    max-width: 900px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  header {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #F44336;
+  }
+
+  .logo {
+    color: white;
+  }
+
+  main {
+    display: flex;
+    height: 200vh;
+    padding: 5px;
+  }
+  
+  .sidebar {
+    flex: 1;
+  }
+
+  .sticky-cart {
+    position: sticky;
+    top: 5px;
+    background-color: #F44336;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .catalog {
+    flex: 5;
+    margin-right: 10px;
+  }
+
+  .catalog h2 {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .catalog ul {
+    list-style-type: none;
+  }
+
+  .product {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+  }
+
+  .product:nth-child(1) {
+    margin-top: 0;
+  }
+
+  .product .product-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  .product-description {
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  footer {
+    background-color: #F44336;
+    color: white;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 900px) {
+    .page-container {
+      border: 1px solid gainsboro;
+      border-radius: 10px;
+      margin-top: 5px;
+    }
+
+    header {
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+    }
+  }
+
+  #modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
+    transition-property: opacity, z-index;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #modal.open {
+    z-index: 1;
+    opacity: 1;
+  }
+
+  .page-container.modal-open {
+    opacity: 0.3;
+  }
+
+  #modal .modal-close {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    padding: 10px;
+    background-color: #F44336;
+  }
+
+  #modal .modal-cart {
+    background-color: #F44336;
+    padding: 10px;
+  }
+</style>
+
+
+<div class="page-container">
+  <header>
+    <h1 class="logo">Sweet-Ass Chocolate Wow</h1>
+  </header>
+  <main>
+    <article class="catalog">
+      <h2>Products</h2>
+      <ul>
+        <li class="product">
+          <div class="product-header">
+            <h3>Chocolate Type</h3>
+            <span class="price">$0.00</span>
+            <button>Add to Cart</button>
+          </div>
+          <p class="product-description">Treat Grandma to this fine bar of sugar free chocolate</p>
+        </li>
+        <li class="product">
+          <div class="product-header">
+            <h3>Chocolate Type</h3>
+            <span class="price">$0.00</span>
+            <button>Add to Cart</button>
+          </div>
+          <p class="product-description">Description descriptio descriptio descriptio descriptio descriptionnnnn</p>
+        </li>
+        <li class="product">
+          <div class="product-header">
+            <h3>Chocolate Type</h3>
+            <span class="price">$0.00</span>
+            <button>Add to Cart</button>
+          </div>
+          <p class="product-description">Description descriptio descriptio descriptio descriptio descriptionnnnn</p>
+        </li>
+        <li class="product">
+          <div class="product-header">
+            <h3>Chocolate Type</h3>
+            <span class="price">$0.00</span>
+            <button>Add to Cart</button>
+          </div>
+          <p class="product-description">Description descriptio descriptio descriptio descriptio descriptionnnnn</p>
+        </li>
+        <li class="product">
+          <div class="product-header">
+            <h3>Chocolate Type</h3>
+            <span class="price">$0.00</span>
+            <button>Add to Cart</button>
+          </div>
+          <p class="product-description">Description descriptio descriptio descriptio descriptio descriptionnnnn</p>
+        </li>
+      </ul>
+    </article>
+    <aside class="sidebar">
+      <div class="sticky-cart">
+        <button>View Cart</button>
+        <p>0 items</p>
+      </div>
+    </aside>
+  </main>
+  <footer>
+    <small>there was no footer in the mocks but I like them.</small>
+  </footer>
+</div>
+
+<div id="modal">
+  <button class="modal-close">x</button>
+  <div class="modal-cart">
+    <h1>Cart Goes Here</h1>
+    <ul class="cart-items">
+      <li class="cart-item">it</li>
+      <li class="cart-item">will</li>
+      <li class="cart-item">be</li>
+      <li class="cart-item">great</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  var pageContainer = document.querySelector('.page-container');
+  var modal = document.getElementById('modal');
+
+  document.querySelector('.sticky-cart button').addEventListener('click', function() {
+    modal.classList.add('open');
+    pageContainer.classList.add('modal-open');
+  });
+
+  modal.querySelector('.modal-close').addEventListener('click', function() {
+    modal.classList.remove('open');
+    pageContainer.classList.remove('modal-open');
+  });
+</script>
