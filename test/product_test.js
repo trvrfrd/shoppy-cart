@@ -22,5 +22,11 @@ describe('Product', () => {
     var requiredFields = ['id', 'price', 'description', 'type'];
     assert.throws(() => createProduct(data, requiredFields), /price.+description.+type/);
   });
+
+  it('throws if required fields are passed but with null or undefined data', () => {
+    var data = { id: 1, description: null, price: undefined, type: undefined };
+    var requiredFields = ['id', 'price', 'description', 'type'];
+    assert.throws(() => createProduct(data, requiredFields), /price.+description.+type/);
+  });
 });
 
