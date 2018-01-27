@@ -46,5 +46,16 @@ describe('Catalog', () => {
     var descriptions = catalog.map(product => product.description);
     assert.deepEqual(descriptions, products.map(p => p.description));
   });
+
+  it('cannot mutate products when mapping over them', () => {
+    var products = fixtureData();
+    var catalog = createCatalog(products);
+    var id = 2;
+    var product = catalog.getProduct(id);
+
+    catalog.map(product => product.description = 'mutated!');
+    var actual = catalog.getProduct(id).description;
+    assert.notEqual(actual, 'mutated!');
+  });
 });
 
