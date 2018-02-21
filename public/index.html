@@ -42,7 +42,7 @@
     height: 200vh;
     padding: 5px;
   }
-  
+
   .sidebar {
     flex: 1;
   }
@@ -225,7 +225,18 @@
   </div>
 </div>
 
+<script src="../src/catalog.js"></script>
+<script src="../src/catalog_ui.js"></script>
+
 <script>
+  fetch('data/inventory.json')
+  .then(response => response.json())
+  .then(function(catalogData) {
+    var catalog = createCatalog(catalogData.chocolates);
+    renderCatalog(document.querySelector('main'), catalog);
+  });
+
+
   var pageContainer = document.querySelector('.page-container');
   var modal = document.getElementById('modal');
 
