@@ -31,11 +31,25 @@ describe('Cart', () => {
     cart.addItem(item2);
 
     var expected = (2 * item1.price) + item2.price;
-    assert.equal(cart.getTotal(), expected);
+    assert.equal(cart.getTotalPrice(), expected);
   });
 
-  it('returns a total of 0 for an empty cart', () => {
-    assert.equal(cart.getTotal(), 0);
+  it('returns a total price of 0 for an empty cart', () => {
+    assert.equal(cart.getTotalPrice(), 0);
+  });
+
+  it('can calculate the total quantity of items in the cart', () => {
+    var item1 = { id: 1, price: 2.99 };
+    var item2 = { id: 2, price: 5.99 };
+    cart.addItem(item1);
+    cart.addItem(item1);
+    cart.addItem(item2);
+
+    assert.equal(cart.getTotalQuantity(), 3);
+  });
+
+  it('returns a total quantity of 0 for an empty cart', () => {
+    assert.equal(cart.getTotalQuantity(), 0);
   });
 
   it('can update the quantity of a given item', () => {
@@ -43,8 +57,7 @@ describe('Cart', () => {
     cart.addItem(item);
     cart.updateQuantity(item.id, 5);
 
-    var expected = 5 * item.price;
-    assert.equal(cart.getTotal(), expected);
+    assert.equal(cart.getTotalQuantity(), 5);
   });
 
   it('can remove an item', () => {
@@ -55,7 +68,7 @@ describe('Cart', () => {
     cart.removeItem(item1.id);
 
     var expected = item2.price;
-    assert.equal(cart.getTotal(), expected);
+    assert.equal(cart.getTotalPrice(), expected);
   });
 
   it('can empty cart', () => {
@@ -65,7 +78,7 @@ describe('Cart', () => {
     cart.addItem(item2);
 
     cart.empty();
-    assert.equal(cart.getTotal(), 0);
+    assert.equal(cart.getTotalPrice(), 0);
   });
 
   it('can map over items', () => {
@@ -86,7 +99,7 @@ describe('Cart', () => {
     cart.addItem(item2);
 
     cart.map(item => item.price = 0);
-    assert.notEqual(cart.getTotal(), 0);
+    assert.notEqual(cart.getTotalPrice(), 0);
   });
 });
 

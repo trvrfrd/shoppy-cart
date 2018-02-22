@@ -44,8 +44,12 @@ function createCart() {
       _items = [];
     },
 
-    getTotal() {
+    getTotalPrice() {
       return _items.reduce((sum, item) => sum + _getItemTotal(item), 0);
+    },
+
+    getTotalQuantity() {
+      return _items.reduce((quantity, item) => quantity + item.quantity, 0);
     },
 
     map(fn) {
