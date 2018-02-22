@@ -157,48 +157,6 @@
   <main>
     <article class="catalog">
       <h2>Products</h2>
-      <ul>
-        <li class="product">
-          <div class="product-header">
-            <h3>Chocolate Type</h3>
-            <span class="price">$0.00</span>
-            <button>Add to Cart</button>
-          </div>
-          <p class="product-description">Treat Grandma to this fine bar of sugar free chocolate</p>
-        </li>
-        <li class="product">
-          <div class="product-header">
-            <h3>Chocolate Type</h3>
-            <span class="price">$0.00</span>
-            <button>Add to Cart</button>
-          </div>
-          <p class="product-description">Description descriptio descriptio descriptio descriptio descriptionnnnn</p>
-        </li>
-        <li class="product">
-          <div class="product-header">
-            <h3>Chocolate Type</h3>
-            <span class="price">$0.00</span>
-            <button>Add to Cart</button>
-          </div>
-          <p class="product-description">Description descriptio descriptio descriptio descriptio descriptionnnnn</p>
-        </li>
-        <li class="product">
-          <div class="product-header">
-            <h3>Chocolate Type</h3>
-            <span class="price">$0.00</span>
-            <button>Add to Cart</button>
-          </div>
-          <p class="product-description">Description descriptio descriptio descriptio descriptio descriptionnnnn</p>
-        </li>
-        <li class="product">
-          <div class="product-header">
-            <h3>Chocolate Type</h3>
-            <span class="price">$0.00</span>
-            <button>Add to Cart</button>
-          </div>
-          <p class="product-description">Description descriptio descriptio descriptio descriptio descriptionnnnn</p>
-        </li>
-      </ul>
     </article>
     <aside class="sidebar">
       <div class="sticky-cart">
@@ -233,7 +191,7 @@
   .then(response => response.json())
   .then(function(catalogData) {
     var catalog = createCatalog(catalogData.chocolates);
-    renderCatalog(document.querySelector('main'), catalog);
+    renderCatalog(document.querySelector('article.catalog'), catalog);
   });
 
 
