@@ -188,6 +188,7 @@
   </div>
 </div>
 
+<script src="../src/createElement.js"></script>
 <script src="../src/catalog.js"></script>
 <script src="../src/catalog_ui.js"></script>
 <script src="../src/cart.js"></script>
@@ -205,7 +206,7 @@
 
   document.body.addEventListener('add-to-cart', function(e) {
     cart.addItem(e.detail);
-    console.log(cart);
+    console.log(cart.getTotalPrice());
   });
 
 
@@ -222,3 +223,4 @@
     pageContainer.classList.remove('modal-open');
   });
 </script>
+

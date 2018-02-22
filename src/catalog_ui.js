@@ -3,7 +3,7 @@
 exports.renderCatalog = renderCatalog;
 
 function renderCatalog(rootNode, catalog) {
-  var list = document.createElement('ul');
+  var list = createElement('ul');
 
   var listItems = catalog.map(renderProduct);
   listItems.forEach(function(item) { list.appendChild(item) });
@@ -26,13 +26,6 @@ function handleAddToCart(catalog, originalEvent) {
 
     originalEvent.target.dispatchEvent(addEvent);
   }
-}
-
-function createElement(tagName, options) {
-  var element = document.createElement(tagName);
-  if (options.className) element.className = options.className;
-  if (options.text) element.textContent = options.text;
-  return element;
 }
 
 function renderProduct(product) {
