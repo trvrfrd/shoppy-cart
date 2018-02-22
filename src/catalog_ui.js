@@ -22,7 +22,9 @@ function renderProduct(product) {
   var item = createElement('li', { className: 'product' });
 
   var header = createElement('div', { className: 'product-header' });
-  header.appendChild(createElement('h3', { text: 'Chocolate Type' }));
+  header.appendChild(createElement('h3', {
+    text: capitalize(product.type)
+  }));
   header.appendChild(createElement('span', {
     className: 'price',
     text: '$' + parseFloat(product.price).toFixed(2)
@@ -37,6 +39,12 @@ function renderProduct(product) {
   }));
 
   return item;
+}
+
+function capitalize(str) {
+  return str.split(' ').map(function(word) {
+    return word[0].toUpperCase() + word.slice(1);
+  }).join(' ');
 }
 
 }(typeof module !== 'undefined' ? module.exports : window));
