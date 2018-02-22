@@ -2,7 +2,7 @@
 
 exports.createCart = createCart;
 
-function createCart(catalog) {
+function createCart() {
   var _items = [];
 
   function _getItemTotal(item) {

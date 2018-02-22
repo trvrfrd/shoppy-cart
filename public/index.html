@@ -190,6 +190,7 @@
 
 <script src="../src/catalog.js"></script>
 <script src="../src/catalog_ui.js"></script>
+<script src="../src/cart.js"></script>
 
 <script>
   fetch('data/inventory.json')
@@ -197,6 +198,14 @@
   .then(function(catalogData) {
     var catalog = createCatalog(catalogData.chocolates);
     renderCatalog(document.querySelector('article.catalog'), catalog);
+  });
+
+
+  var cart = createCart();
+
+  document.body.addEventListener('add-to-cart', function(e) {
+    cart.addItem(e.detail);
+    console.log(cart);
   });
 
 
