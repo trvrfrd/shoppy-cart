@@ -217,9 +217,13 @@
     cart.addItem(e.detail);
   });
 
-
   var pageContainer = document.querySelector('.page-container');
   var modal = document.getElementById('modal');
+
+  function closeModal() {
+    modal.classList.remove('open');
+    pageContainer.classList.remove('modal-open');
+  }
 
   document.querySelector('.sticky-cart button').addEventListener('click', function() {
     renderCart(document.querySelector('.modal-cart'), cart);
@@ -227,9 +231,11 @@
     pageContainer.classList.add('modal-open');
   });
 
-  modal.querySelector('.modal-close').addEventListener('click', function() {
-    modal.classList.remove('open');
-    pageContainer.classList.remove('modal-open');
+  modal.querySelector('.modal-close').addEventListener('click', closeModal);
+
+  // escape key exits modal!
+  document.body.addEventListener('keydown', function(e) {
+    if (e.keyCode === 27) closeModal();
   });
 </script>
 
