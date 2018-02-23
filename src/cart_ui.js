@@ -3,7 +3,9 @@
 exports.renderCart = renderCart;
 
 function renderCart(rootNode, cart) {
-  if (rootNode.querySelector('.cart-items')) rootNode.querySelector('.cart-items').remove();
+  rootNode.innerHTML = '';
+
+  rootNode.appendChild(createElement('h1', { text: 'Your Cart' }));
 
   var container;
 
@@ -18,26 +20,30 @@ function renderCart(rootNode, cart) {
 
   container.className = 'cart-items';
   rootNode.appendChild(container);
+
+  rootNode.appendChild(createElement('button', { text: 'Clear' }));
+  rootNode.appendChild(createElement('button', { text: 'Close' }));
 }
 
 function renderItem(item) {
-  var li = createElement('tr', { className: 'cart-item' });
+  var tr = createElement('tr', { className: 'cart-item' });
 
-  li.appendChild(createElement('td', { text: item.type }));
-  li.appendChild(createElement('td', { text: displayPrice(item) }));
-  li.appendChild(createElement('td', { text: item.quantity}));
-  li.appendChild(createElement('td', { text: 'Remove' }));
-  return li;
+  tr.appendChild(createElement('td', { text: item.type }));
+  tr.appendChild(createElement('td', { text: displayPrice(item) }));
+  tr.appendChild(createElement('td', { text: item.quantity}));
+  tr.appendChild(createElement('td'));
+  tr.lastChild.appendChild(createElement('button', { text: 'Remove' }));
+  return tr;
 }
 
 function renderHeader() {
-  var li = createElement('tr', { className: 'cart-item' });
+  var tr = createElement('tr', { className: 'cart-item' });
 
-  li.appendChild(createElement('th', { text: 'Type' }));
-  li.appendChild(createElement('th', { text: 'Price' }));
-  li.appendChild(createElement('th', { text: 'Qty' }));
-  li.appendChild(createElement('th'));
-  return li;
+  tr.appendChild(createElement('th', { text: 'Type' }));
+  tr.appendChild(createElement('th', { text: 'Price' }));
+  tr.appendChild(createElement('th', { text: 'Qty' }));
+  tr.appendChild(createElement('th'));
+  return tr;
 }
 
 function displayPrice(product) {

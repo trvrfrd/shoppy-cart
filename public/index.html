@@ -149,21 +149,36 @@
   }
 
   #modal .modal-cart {
-    background-color: #F44336;
-    padding: 10px;
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
     width: 50%;
   }
 
   .modal-cart h1 {
+    background-color: #F44336;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    color: white;
     text-align: center;
-  }
-
-  .modal-cart .cart-items {
-    text-align: left;
     width: 100%;
   }
 
-  .modal-cart .cart-items tr * {
+  .modal-cart .cart-items {
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .modal-cart table.cart-items {
+    border-collapse: collapse;
+    vertical-align: middle;
+  }
+
+  .modal-cart .cart-items tr {
+    border: 1px solid gainsboro;
+  }
+  .modal-cart .cart-items td, .modal-cart .cart-items th {
     padding: 5px;
   }
 </style>
@@ -191,9 +206,7 @@
 
 <div id="modal">
   <button class="modal-close">x</button>
-  <div class="modal-cart">
-    <h1>Your Cart</h1>
-  </div>
+  <div class="modal-cart"></div>
 </div>
 
 <script src="../src/createElement.js"></script>
