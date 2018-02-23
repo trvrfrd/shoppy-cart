@@ -151,6 +151,20 @@
   #modal .modal-cart {
     background-color: #F44336;
     padding: 10px;
+    width: 50%;
+  }
+
+  .modal-cart h1 {
+    text-align: center;
+  }
+
+  .modal-cart .cart-items {
+    text-align: left;
+    width: 100%;
+  }
+
+  .modal-cart .cart-items tr * {
+    padding: 5px;
   }
 </style>
 
@@ -178,13 +192,7 @@
 <div id="modal">
   <button class="modal-close">x</button>
   <div class="modal-cart">
-    <h1>Cart Goes Here</h1>
-    <ul class="cart-items">
-      <li class="cart-item">it</li>
-      <li class="cart-item">will</li>
-      <li class="cart-item">be</li>
-      <li class="cart-item">great</li>
-    </ul>
+    <h1>Your Cart</h1>
   </div>
 </div>
 
@@ -192,6 +200,7 @@
 <script src="../src/catalog.js"></script>
 <script src="../src/catalog_ui.js"></script>
 <script src="../src/cart.js"></script>
+<script src="../src/cart_ui.js"></script>
 
 <script>
   fetch('data/inventory.json')
@@ -206,7 +215,6 @@
 
   document.body.addEventListener('add-to-cart', function(e) {
     cart.addItem(e.detail);
-    console.log(cart.getTotalPrice());
   });
 
 
@@ -214,6 +222,7 @@
   var modal = document.getElementById('modal');
 
   document.querySelector('.sticky-cart button').addEventListener('click', function() {
+    renderCart(document.querySelector('.modal-cart'), cart);
     modal.classList.add('open');
     pageContainer.classList.add('modal-open');
   });
