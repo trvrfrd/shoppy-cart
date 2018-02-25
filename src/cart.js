@@ -22,7 +22,7 @@ function createCart() {
     addItem(item) {
       _checkItemProps(item);
       // should price get updated each add? what if it has changed in Catalog?
-      item = _getItem(item.id) || { quantity: 0, id: item.id, price: item.price };
+      item = _getItem(item.id) || Object.assign({ quantity: 0 }, item);
       if (item.quantity === 0) _items.push(item);
       item.quantity += 1;
     },

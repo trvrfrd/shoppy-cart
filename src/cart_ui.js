@@ -25,7 +25,7 @@ function renderModalCart(rootNode, cart) {
 function renderItem(item) {
   var tr = createElement('tr', { className: 'cart-item' });
 
-  tr.appendChild(createElement('td', { text: item.type }));
+  tr.appendChild(createElement('td', { text: capitalize(item.type) }));
   tr.appendChild(createElement('td', { text: displayPrice(item.price) }));
   tr.appendChild(createElement('td', { text: item.quantity}));
   tr.appendChild(createElement('td'));

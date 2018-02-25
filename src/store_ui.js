@@ -54,10 +54,4 @@ function renderProduct(product) {
   return item;
 }
 
-function capitalize(str) {
-  return str.split(' ').map(function(word) {
-    return word[0].toUpperCase() + word.slice(1);
-  }).join(' ');
-}
-
 }(typeof module !== 'undefined' ? module.exports : window));
