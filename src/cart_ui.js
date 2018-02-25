@@ -42,10 +42,6 @@ function renderHeader() {
   return tr;
 }
 
-function displayPrice(product) {
-  return '$' + parseFloat(product.price).toFixed(2);
-}
-
 function renderCartCount(rootNode, cart) {
   var count = cart.getTotalQuantity();
   var message = count + (count === 1 ? ' item' : ' items');
