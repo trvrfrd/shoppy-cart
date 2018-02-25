@@ -145,20 +145,27 @@
     width: 100%;
   }
 
-  .modal-cart-container .cart-items {
+  .modal-cart-container table.cart-items {
+    border-collapse: collapse;
     padding: 10px;
     text-align: center;
+    vertical-align: middle;
     width: 100%;
   }
 
-  .modal-cart-container table.cart-items {
-    border-collapse: collapse;
-    vertical-align: middle;
+  table.cart-items tr {
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
   }
 
-  .modal-cart-container .cart-items tr {
-    border: 1px solid gainsboro;
+  table.cart-items tr:first-child {
+    border-top: none;
   }
+
+  table.cart-items tr:last-child {
+    border-bottom: none;
+  }
+
   .modal-cart-container .cart-items td, .modal-cart-container .cart-items th {
     padding: 5px;
   }

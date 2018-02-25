@@ -15,6 +15,7 @@ function renderModalCart(rootNode, cart) {
     container.appendChild(renderHeader());
     var rows = cart.map(renderItem);
     rows.forEach(function(row) { container.appendChild(row) });
+    container.appendChild(renderTotal(cart));
   }
 
   container.className = 'cart-items';
@@ -25,7 +26,7 @@ function renderItem(item) {
   var tr = createElement('tr', { className: 'cart-item' });
 
   tr.appendChild(createElement('td', { text: item.type }));
-  tr.appendChild(createElement('td', { text: displayPrice(item) }));
+  tr.appendChild(createElement('td', { text: displayPrice(item.price) }));
   tr.appendChild(createElement('td', { text: item.quantity}));
   tr.appendChild(createElement('td'));
   tr.lastChild.appendChild(createElement('button', { text: 'Remove' }));
@@ -39,6 +40,15 @@ function renderHeader() {
   tr.appendChild(createElement('th', { text: 'Price' }));
   tr.appendChild(createElement('th', { text: 'Qty' }));
   tr.appendChild(createElement('th'));
+  return tr;
+}
+
+function renderTotal(cart) {
+  var tr =  createElement('tr', { className: 'cart-count' });
+  tr.appendChild(createElement('td', {
+    text: 'Total: ' + displayPrice(cart.getTotalPrice())
+  }));
+
   return tr;
 }
 

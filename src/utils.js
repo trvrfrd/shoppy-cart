@@ -11,8 +11,8 @@ function createElement(tagName, options) {
   return element;
 }
 
-function displayPrice(product) {
-  return '$' + parseFloat(product.price).toFixed(2);
+function displayPrice(num) {
+  return '$' + parseFloat(num).toFixed(2);
 }
 
 }(window));

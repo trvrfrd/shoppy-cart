@@ -37,7 +37,7 @@ function renderProduct(product) {
   }));
   header.appendChild(createElement('span', {
     className: 'price',
-    text: displayPrice(product)
+    text: displayPrice(product.price)
   }));
 
   var button = createElement('button', { text: 'Add to Cart' });
@@ -52,10 +52,6 @@ function renderProduct(product) {
   }));
 
   return item;
-}
-
-function displayPrice(product) {
-  return '$' + parseFloat(product.price).toFixed(2);
 }
 
 function capitalize(str) {
