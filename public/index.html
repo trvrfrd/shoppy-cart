@@ -100,6 +100,7 @@
     background-color: #F44336;
     color: white;
     text-align: center;
+    padding: 5px;
   }
 
   @media screen and (min-width: 900px) {
@@ -140,6 +141,7 @@
     opacity: 0.3;
   }
 
+  /*
   #modal .modal-close {
     position: fixed;
     top: 5px;
@@ -147,15 +149,16 @@
     padding: 10px;
     background-color: #F44336;
   }
+  */
 
-  #modal .modal-cart {
+  #modal .modal-cart-container {
     background-color: white;
     border: 1px solid gainsboro;
     border-radius: 10px;
     width: 50%;
   }
 
-  .modal-cart h1 {
+  .modal-cart-container h1 {
     background-color: #F44336;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -164,21 +167,21 @@
     width: 100%;
   }
 
-  .modal-cart .cart-items {
+  .modal-cart-container .cart-items {
     padding: 10px;
     text-align: center;
     width: 100%;
   }
 
-  .modal-cart table.cart-items {
+  .modal-cart-container table.cart-items {
     border-collapse: collapse;
     vertical-align: middle;
   }
 
-  .modal-cart .cart-items tr {
+  .modal-cart-container .cart-items tr {
     border: 1px solid gainsboro;
   }
-  .modal-cart .cart-items td, .modal-cart .cart-items th {
+  .modal-cart-container .cart-items td, .modal-cart-container .cart-items th {
     padding: 5px;
   }
 </style>
@@ -205,8 +208,16 @@
 </div>
 
 <div id="modal">
-  <button class="modal-close">x</button>
-  <div class="modal-cart"></div>
+  <!-- <button class="modal-close">x</button> -->
+
+  <div class="modal-cart-container">
+    <h1>Your Cart</h1>
+    <div class="modal-cart-items"></div>
+    <div class="modal-cart-controls">
+      <button class="clear-cart">Clear</button>
+      <button class="modal-close">Close</button>
+    </div>
+  </div>
 </div>
 
 <script src="../src/createElement.js"></script>
@@ -223,28 +234,37 @@
     renderCatalog(document.querySelector('article.catalog'), catalog);
   });
 
+  var pageContainer = document.querySelector('.page-container');
+  var modal = document.getElementById('modal');
+  var cartItemsContainer = document.querySelector('.modal-cart-items');
 
   var cart = createCart();
+  renderModalCart(cartItemsContainer, cart);
 
   document.body.addEventListener('add-to-cart', function(e) {
     cart.addItem(e.detail);
+    renderModalCart(cartItemsContainer, cart);
   });
 
-  var pageContainer = document.querySelector('.page-container');
-  var modal = document.getElementById('modal');
+
+  function openModal() {
+    modal.classList.add('open');
+    pageContainer.classList.add('modal-open');
+  }
+
+  document.querySelector('.sticky-cart button').addEventListener('click', openModal);
 
   function closeModal() {
     modal.classList.remove('open');
     pageContainer.classList.remove('modal-open');
   }
 
-  document.querySelector('.sticky-cart button').addEventListener('click', function() {
-    renderCart(document.querySelector('.modal-cart'), cart);
-    modal.classList.add('open');
-    pageContainer.classList.add('modal-open');
-  });
+  document.querySelector('.modal-close').addEventListener('click', closeModal);
 
-  modal.querySelector('.modal-close').addEventListener('click', closeModal);
+  document.querySelector('.clear-cart').addEventListener('click', function() {
+    cart.clear();
+    renderModalCart(cartItemsContainer, cart);
+  });
 
   // escape key exits modal!
   document.body.addEventListener('keydown', function(e) {

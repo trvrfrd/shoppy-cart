@@ -1,11 +1,9 @@
 (function(exports) {
 
-exports.renderCart = renderCart;
+exports.renderModalCart = renderModalCart;
 
-function renderCart(rootNode, cart) {
+function renderModalCart(rootNode, cart) {
   rootNode.innerHTML = '';
-
-  rootNode.appendChild(createElement('h1', { text: 'Your Cart' }));
 
   var container;
 
@@ -20,9 +18,6 @@ function renderCart(rootNode, cart) {
 
   container.className = 'cart-items';
   rootNode.appendChild(container);
-
-  rootNode.appendChild(createElement('button', { text: 'Clear' }));
-  rootNode.appendChild(createElement('button', { text: 'Close' }));
 }
 
 function renderItem(item) {

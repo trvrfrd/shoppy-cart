@@ -71,13 +71,13 @@ describe('Cart', () => {
     assert.equal(cart.getTotalPrice(), expected);
   });
 
-  it('can empty cart', () => {
+  it('can clear cart', () => {
     var item1 = { id: 1, price: 2.99 };
     var item2 = { id: 2, price: 5.99 };
     cart.addItem(item1);
     cart.addItem(item2);
 
-    cart.empty();
+    cart.clear();
     assert.equal(cart.getTotalPrice(), 0);
   });
 

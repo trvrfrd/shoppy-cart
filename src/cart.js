@@ -40,7 +40,7 @@ function createCart() {
       }
     },
 
-    empty() {
+    clear() {
       _items = [];
     },
 
