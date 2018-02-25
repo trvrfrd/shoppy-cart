@@ -198,7 +198,7 @@
     <aside class="sidebar">
       <div class="sticky-cart">
         <button>View Cart</button>
-        <p>0 items</p>
+        <p class="cart-count">0 items</p>
       </div>
     </aside>
   </main>
@@ -237,15 +237,17 @@
   var pageContainer = document.querySelector('.page-container');
   var modal = document.getElementById('modal');
   var cartItemsContainer = document.querySelector('.modal-cart-items');
+  var cartCount = document.querySelector('.sidebar .cart-count');
 
   var cart = createCart();
   renderModalCart(cartItemsContainer, cart);
+  renderCartCount(cartCount, cart);
 
   document.body.addEventListener('add-to-cart', function(e) {
     cart.addItem(e.detail);
     renderModalCart(cartItemsContainer, cart);
+    renderCartCount(cartCount, cart);
   });
-
 
   function openModal() {
     modal.classList.add('open');
@@ -264,6 +266,7 @@
   document.querySelector('.clear-cart').addEventListener('click', function() {
     cart.clear();
     renderModalCart(cartItemsContainer, cart);
+    renderCartCount(cartCount, cart);
   });
 
   // escape key exits modal!

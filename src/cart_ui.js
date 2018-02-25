@@ -1,6 +1,7 @@
 (function(exports) {
 
 exports.renderModalCart = renderModalCart;
+exports.renderCartCount = renderCartCount;
 
 function renderModalCart(rootNode, cart) {
   rootNode.innerHTML = '';
@@ -43,6 +44,12 @@ function renderHeader() {
 
 function displayPrice(product) {
   return '$' + parseFloat(product.price).toFixed(2);
+}
+
+function renderCartCount(rootNode, cart) {
+  var count = cart.getTotalQuantity();
+  var message = count + (count === 1 ? ' item' : ' items');
+  rootNode.innerHTML = message;
 }
 
 }(typeof module !== 'undefined' ? module.exports : window));
