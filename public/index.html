@@ -255,6 +255,12 @@
     renderCartCount(cartCount, cart);
   });
 
+  document.body.addEventListener('remove-from-cart', function(e) {
+    cart.removeItem(e.detail.id);
+    renderModalCart(cartItemsContainer, cart);
+    renderCartCount(cartCount, cart);
+  });
+
   function openModal() {
     modal.classList.add('open');
     pageContainer.classList.add('modal-open');

@@ -29,8 +29,21 @@ function renderItem(item) {
   tr.appendChild(createElement('td', { text: displayPrice(item.price) }));
   tr.appendChild(createElement('td', { text: item.quantity}));
   tr.appendChild(createElement('td'));
-  tr.lastChild.appendChild(createElement('button', { text: 'Remove' }));
+  tr.lastChild.appendChild(removeButton(item));
   return tr;
+}
+
+function removeButton(item) {
+  var button = createElement('button', { text: 'Remove' });
+  button.addEventListener('click', function(originalEvent) {
+    var removeEvent = new CustomEvent('remove-from-cart', {
+      detail: { id: item.id },
+      bubbles: true
+    });
+    originalEvent.target.dispatchEvent(removeEvent);
+  });
+
+  return button;
 }
 
 function renderHeader() {
