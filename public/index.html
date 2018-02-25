@@ -103,19 +103,6 @@
     padding: 5px;
   }
 
-  @media screen and (min-width: 900px) {
-    .page-container {
-      border: 1px solid gainsboro;
-      border-radius: 10px;
-      margin-top: 5px;
-    }
-
-    header {
-      border-top-right-radius: 10px;
-      border-top-left-radius: 10px;
-    }
-  }
-
   #modal {
     position: fixed;
     top: 0;
@@ -128,7 +115,8 @@
     transition-duration: 200ms;
     transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
   }
 
@@ -141,21 +129,11 @@
     opacity: 0.3;
   }
 
-  /*
-  #modal .modal-close {
-    position: fixed;
-    top: 5px;
-    left: 5px;
-    padding: 10px;
-    background-color: #F44336;
-  }
-  */
-
   #modal .modal-cart-container {
     background-color: white;
     border: 1px solid gainsboro;
     border-radius: 10px;
-    width: 50%;
+    width: 100%;
   }
 
   .modal-cart-container h1 {
@@ -184,6 +162,28 @@
   .modal-cart-container .cart-items td, .modal-cart-container .cart-items th {
     padding: 5px;
   }
+
+  /* DESKTOP STYLE OVERRIDES */
+  @media screen and (min-width: 900px) {
+    .page-container {
+      border: 1px solid gainsboro;
+      border-radius: 10px;
+      margin-top: 5px;
+    }
+
+    header {
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+    }
+
+    #modal {
+      justify-content: center;
+    }
+
+    #modal .modal-cart-container {
+      width: 50%;
+    }
+  }
 </style>
 
 
@@ -208,7 +208,6 @@
 </div>
 
 <div id="modal">
-  <!-- <button class="modal-close">x</button> -->
 
   <div class="modal-cart-container">
     <h1>Your Cart</h1>
