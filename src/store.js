@@ -1,27 +1,29 @@
 (function(exports) {
 
-exports.createCatalog = createCatalog;
+exports.createStore = createStore;
 
-function createCatalog(products, requiredFields = []) {
-  products = products.map(p => createProduct(p, requiredFields));
+var REQUIRED_FIELDS = ['id', 'type', 'price', 'description']
+
+function createStore(inventory, requiredFields = REQUIRED_FIELDS) {
+  inventory = inventory.map(product => _createProduct(product, requiredFields));
 
   return {
     getProduct(id) {
-      return products.find(p => p.id === id);
+      return inventory.find(p => p.id === id);
     },
 
     map(fn) {
-      return products.map(p => fn(Object.assign({}, p)));
+      return inventory.map(p => fn(Object.assign({}, p)));
     }
   }
 }
 
-function createProduct(data, requiredFields) {
-  checkFields(data, requiredFields);
+function _createProduct(data, requiredFields) {
+  _checkFields(data, requiredFields);
   return Object.assign({}, data);
 }
 
-function checkFields(data, requiredFields) {
+function _checkFields(data, requiredFields) {
   var givenFields = Object.keys(data);
   var missingFields = requiredFields.filter(field => {
     return !givenFields.includes(field) || data[field] == null;

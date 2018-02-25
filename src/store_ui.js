@@ -1,24 +1,24 @@
 (function(exports) {
 
-exports.renderCatalog = renderCatalog;
+exports.renderStore = renderStore;
 
-function renderCatalog(rootNode, catalog) {
+function renderStore(rootNode, store) {
   var list = createElement('ul');
 
-  var listItems = catalog.map(renderProduct);
+  var listItems = store.map(renderProduct);
   listItems.forEach(function(item) { list.appendChild(item) });
 
   list.addEventListener('click', function(e) {
-    handleAddToCart(catalog, e);
+    handleAddToCart(store, e);
   });
 
   rootNode.appendChild(list);
 }
 
-function handleAddToCart(catalog, originalEvent) {
+function handleAddToCart(store, originalEvent) {
   if (originalEvent.target.tagName === 'BUTTON') {
     var id = parseInt(originalEvent.target.dataset.id, 10);
-    var productData = catalog.getProduct(id);
+    var productData = store.getProduct(id);
     var addEvent = new CustomEvent('add-to-cart', {
       detail: productData,
       bubbles: true

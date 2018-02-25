@@ -221,17 +221,17 @@
 </div>
 
 <script src="../src/createElement.js"></script>
-<script src="../src/catalog.js"></script>
-<script src="../src/catalog_ui.js"></script>
+<script src="../src/store.js"></script>
+<script src="../src/store_ui.js"></script>
 <script src="../src/cart.js"></script>
 <script src="../src/cart_ui.js"></script>
 
 <script>
   fetch('data/inventory.json')
   .then(response => response.json())
-  .then(function(catalogData) {
-    var catalog = createCatalog(catalogData.chocolates);
-    renderCatalog(document.querySelector('article.catalog'), catalog);
+  .then(function(inventory) {
+    var store = createStore(inventory.chocolates);
+    renderStore(document.querySelector('article.catalog'), store);
   });
 
   var pageContainer = document.querySelector('.page-container');
