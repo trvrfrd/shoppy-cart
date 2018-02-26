@@ -24,12 +24,11 @@ function renderModalCart(rootNode, cart) {
 
 function renderItem(item) {
   var tr = createElement('tr', { className: 'cart-item' });
+  tr.insertCell().textContent = capitalize(item.type);
+  tr.insertCell().textContent = displayPrice(item.price);
+  tr.insertCell().textContent = item.quantity;
+  tr.insertCell().appendChild(removeButton(item));
 
-  tr.appendChild(createElement('td', { text: capitalize(item.type) }));
-  tr.appendChild(createElement('td', { text: displayPrice(item.price) }));
-  tr.appendChild(createElement('td', { text: item.quantity}));
-  tr.appendChild(createElement('td'));
-  tr.lastChild.appendChild(removeButton(item));
   return tr;
 }
 
@@ -47,20 +46,18 @@ function removeButton(item) {
 }
 
 function renderHeader() {
-  var tr = createElement('tr', { className: 'cart-item' });
-
+  var tr = createElement('tr');
   tr.appendChild(createElement('th', { text: 'Type' }));
   tr.appendChild(createElement('th', { text: 'Price' }));
   tr.appendChild(createElement('th', { text: 'Qty' }));
   tr.appendChild(createElement('th'));
+
   return tr;
 }
 
 function renderTotal(cart) {
   var tr =  createElement('tr', { className: 'cart-count' });
-  tr.appendChild(createElement('td', {
-    text: 'Total: ' + displayPrice(cart.getTotalPrice())
-  }));
+  tr.insertCell().textContent = 'Total: ' + displayPrice(cart.getTotalPrice());
 
   return tr;
 }
