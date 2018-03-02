@@ -241,26 +241,15 @@
     renderStore(document.querySelector('article.catalog'), store);
   });
 
+  var cart = createCart();
+  cartUI.init(cart, {
+    itemsContainer: document.querySelector('.modal-cart-items'),
+    countContainer: document.querySelector('.sidebar .cart-count'),
+    clearButton: document.querySelector('.clear-cart')
+  });
+
   var pageContainer = document.querySelector('.page-container');
   var modal = document.getElementById('modal');
-  var cartItemsContainer = document.querySelector('.modal-cart-items');
-  var cartCount = document.querySelector('.sidebar .cart-count');
-
-  var cart = createCart();
-  renderModalCart(cartItemsContainer, cart);
-  renderCartCount(cartCount, cart);
-
-  document.body.addEventListener('add-to-cart', function(e) {
-    cart.addItem(e.detail);
-    renderModalCart(cartItemsContainer, cart);
-    renderCartCount(cartCount, cart);
-  });
-
-  document.body.addEventListener('remove-from-cart', function(e) {
-    cart.removeItem(e.detail.id);
-    renderModalCart(cartItemsContainer, cart);
-    renderCartCount(cartCount, cart);
-  });
 
   function openModal() {
     modal.classList.add('open');
@@ -275,12 +264,6 @@
   }
 
   document.querySelector('.modal-close').addEventListener('click', closeModal);
-
-  document.querySelector('.clear-cart').addEventListener('click', function() {
-    cart.clear();
-    renderModalCart(cartItemsContainer, cart);
-    renderCartCount(cartCount, cart);
-  });
 
   // escape key exits modal!
   document.body.addEventListener('keydown', function(e) {

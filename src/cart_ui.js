@@ -1,10 +1,45 @@
-(function(exports) {
+(function() {
 
-exports.renderModalCart = renderModalCart;
-exports.renderCartCount = renderCartCount;
+var cart = null;
+var itemsContainer = null;
+var countContainer = null;
+var clearButton = null;
 
-function renderModalCart(rootNode, cart) {
-  rootNode.innerHTML = '';
+window.cartUI = {
+  init: function init(cartInstance, options) {
+    cart = cartInstance;
+    itemsContainer = options.itemsContainer;
+    countContainer = options.countContainer;
+    clearButton = options.clearButton;
+    render();
+    addEventListeners();
+  }
+}
+
+function addEventListeners() {
+  document.body.addEventListener('add-to-cart', function(e) {
+    cart.addItem(e.detail);
+    render();
+  });
+
+  document.body.addEventListener('remove-from-cart', function(e) {
+    cart.removeItem(e.detail.id);
+    render();
+  });
+
+  clearButton.addEventListener('click', function() {
+    cart.clear();
+    render();
+  });
+}
+
+function render() {
+  renderItems();
+  renderCount();
+}
+
+function renderItems() {
+  itemsContainer.innerHTML = '';
 
   var container;
 
@@ -19,7 +54,7 @@ function renderModalCart(rootNode, cart) {
   }
 
   container.className = 'cart-items';
-  rootNode.appendChild(container);
+  itemsContainer.appendChild(container);
 }
 
 function renderItem(item) {
@@ -62,10 +97,10 @@ function renderTotal(cart) {
   return tr;
 }
 
-function renderCartCount(rootNode, cart) {
+function renderCount() {
   var count = cart.getTotalQuantity();
   var message = count + (count === 1 ? ' item' : ' items');
-  rootNode.innerHTML = message;
+  countContainer.innerHTML = message;
 }
 
-}(typeof module !== 'undefined' ? module.exports : window));
+}());
