@@ -17,7 +17,7 @@ function displayPrice(num) {
 }
 
 function capitalize(str) {
-  return str.split(' ').map(function(word) {
+  return str.trim().split(' ').map(function(word) {
     return word[0].toUpperCase() + word.slice(1);
   }).join(' ');
 }

@@ -1,27 +1,27 @@
 {
-  "chocolates" : [
+  "cakes" : [
     {
-      "description": "Milk chocolate milder and sweeter because it is made with milk and a higher sugar content than the darker varieties. It also has a smaller quantity of chocolate liquor and, therefore, fewer flavors and aromas.",
+      "description": "You won't know which way is up! A very disorienting and overall unpleasant experience.",
       "id": 1,
-      "type": "milk",
+      "type": "pineapple upside-down cake",
       "price": 1.50
     },
     {
-      "description": "Dark chocolate has the most chocolate liquor and the most intense chocolate flavor. Look for bitter, roasted, fruit, earthy, woodsy and/or nutty notes.",
+      "description": "Komm, süßer Tod!",
       "id": 2,
-      "type": "dark",
+      "type": "schwarzwälder kirschtorte",
       "price": 2.50
     },
     {
-      "description": "White chocolate lacks chocolate liquor, and includes the milk and vanilla used in milk chocolate. These ingredients give it a variety of sweet flavor notes, including cream, milk, honey, vanilla, caramel and/or fruit.",
+      "description": "Doesn't look that short to me... the strawberry part I totally get, though.",
       "id": 3,
-      "type": "white",
+      "type": "strawberry shortcake",
       "price": 0.50
     },
     {
-      "description": "Treat Grandma to this fine bar of sugar free chocolate",
+      "description": "Like most things in life, I only know what this is from The Simpsons.",
       "id": 4,
-      "type": "sugar free",
+      "type": "lady baltimore cake",
       "price": 1
     }
   ]

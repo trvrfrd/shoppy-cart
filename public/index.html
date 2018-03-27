@@ -6,7 +6,7 @@
 
 <div class="page-container">
   <header>
-    <h1 class="logo">Sweet-Ass Chocolate Wow</h1>
+    <h1 class="logo">Cake Town USA</h1>
   </header>
   <main>
     <article class="catalog">
@@ -46,7 +46,7 @@
   fetch('data/inventory.json')
   .then(response => response.json())
   .then(function(inventory) {
-    var store = createStore(inventory.chocolates);
+    var store = createStore(inventory.cakes);
     renderStore(document.querySelector('article.catalog'), store);
   });
 
