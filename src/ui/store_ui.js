@@ -1,4 +1,4 @@
-(function(exports) {
+var { createElement, displayPrice, capitalize } = require('./utils');
 
 exports.renderStore = renderStore;
 
@@ -54,4 +54,3 @@ function renderProduct(product) {
   return item;
 }
 
-}(typeof module !== 'undefined' ? module.exports : window));

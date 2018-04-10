@@ -1,5 +1,3 @@
-(function(exports) {
-
 exports.createElement = createElement;
 exports.displayPrice = displayPrice;
 exports.capitalize = capitalize;
@@ -22,4 +20,3 @@ function capitalize(str) {
   }).join(' ');
 }
 
-}(window));

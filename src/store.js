@@ -1,5 +1,3 @@
-(function(exports) {
-
 exports.createStore = createStore;
 
 var REQUIRED_FIELDS = ['id', 'type', 'price', 'description']
@@ -33,6 +31,4 @@ function _checkFields(data, requiredFields) {
     throw new Error(`Product with id #{data.id} is missing required fields ${missingFields}`);
   }
 }
-
-}(typeof module !== 'undefined' ? module.exports : window));
 

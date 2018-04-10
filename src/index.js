@@ -1,3 +1,9 @@
+var { createElement, displayPrice, capitalize } = require('./ui/utils');
+var { createStore } = require('./store');
+var { renderStore } = require('./ui/store_ui');
+var { createCart } = require('./cart');
+var cartUI = require('./ui/cart_ui');
+
 fetch('data/inventory.json')
   .then(response => response.json())
   .then(function(inventory) {

@@ -1,11 +1,11 @@
-(function() {
+var { createElement, displayPrice, capitalize } = require('./utils');
 
 var cart = null;
 var itemsContainer = null;
 var countContainer = null;
 var clearButton = null;
 
-window.cartUI = {
+module.exports = {
   init: function init(cartInstance, options) {
     cart = cartInstance;
     itemsContainer = options.itemsContainer;
@@ -103,4 +103,3 @@ function renderCount() {
   countContainer.innerHTML = message;
 }
 
-}());
