@@ -59,4 +59,3 @@ function createCart() {
 }
 
 }(typeof module !== 'undefined' ? module.exports : window));
-
