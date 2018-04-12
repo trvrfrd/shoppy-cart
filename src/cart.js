@@ -1,5 +1,3 @@
-(function(exports) {
-
 exports.createCart = createCart;
 
 function createCart() {
@@ -57,5 +55,3 @@ function createCart() {
     }
   }
 }
-
-}(typeof module !== 'undefined' ? module.exports : window));
