@@ -10,7 +10,7 @@
     "test:watch": "mocha --watch 'test/**/*.js' 'src/!(index).js' --reporter min"
   },
   "devDependencies": {
-    "chai": "^4.3.7",
+    "chai": "^4.3.9",
     "mocha": "^10.2.0",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
